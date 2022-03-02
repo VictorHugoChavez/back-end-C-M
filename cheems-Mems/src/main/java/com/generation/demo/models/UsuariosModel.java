@@ -20,10 +20,10 @@ public class UsuariosModel {
 	@Column(unique = true, nullable = false)
 	private Integer id;
 	
-	@Column(name = "Email", nullable = false, length = 255)
+	@Column(name = "Email", nullable = false, length = 255, unique=true)
 	private String email;
 	
-	@Column(name = "Usuario", nullable = false, length = 12)
+	@Column(name = "Usuario", nullable = false, length = 12, unique=true)
 	private String usuario;
 	
 	@Column(name = "Password", nullable = false, length = 16)

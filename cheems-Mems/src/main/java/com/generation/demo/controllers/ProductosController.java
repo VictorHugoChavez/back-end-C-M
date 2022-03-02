@@ -16,25 +16,24 @@ import com.generation.demo.services.ProductosService;
 @RestController
 public class ProductosController {
 	private final ProductosService productosService;
-	
 	public ProductosController(@Autowired ProductosService productosService) {
 		this.productosService = productosService;
 	}
 	//mostrar datos de productos
-			@GetMapping("/productos")
-			public ArrayList<ProductosModel> obtenerDatosProduct() {
-				return productosService.obtenerDatos();
-			}
+	@GetMapping("/productos")
+	public ArrayList<ProductosModel> obtenerDatosProduct() {
+	return productosService.obtenerDatos();
+	}
 			
-			//Guardar & editar datos en la tabla usuarios
-			@PostMapping("/productos")
-			public ProductosModel guardarDatosProduct(@RequestBody ProductosModel productosModel) {
-				return productosService.guardarDatos(productosModel);
-			}
+	//Guardar & editar datos en la tabla usuarios
+	@PostMapping("/productos")
+	public ProductosModel guardarDatosProduct(@RequestBody ProductosModel productosModel) {
+	return productosService.guardarDatos(productosModel);
+	}
 			
-			//Eliminar datos va a borrar elementos utilizando un identificador
-			@DeleteMapping(path = "/productos/{id}") 
-			public boolean eliminarDatoProduct(@PathVariable("id") Integer id) {
-				return productosService.eliminarDato(id);
-			}
+	//Eliminar datos va a borrar elementos utilizando un identificador
+	@DeleteMapping(path = "/productos/{id}") 
+	public boolean eliminarDatoProduct(@PathVariable("id") Integer id) {
+	return productosService.eliminarDato(id);
+	}
 }

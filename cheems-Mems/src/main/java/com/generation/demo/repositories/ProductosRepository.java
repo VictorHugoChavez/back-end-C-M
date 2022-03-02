@@ -9,5 +9,5 @@ import com.generation.demo.models.ProductosModel;
 
 @Repository
 public interface ProductosRepository extends JpaRepository<ProductosModel, Integer> {
-	ProductosModel findByIdContainingNombre_producto(String Producto);
+	//ProductosModel findByIdContainingNombre_producto(String Producto);
 }
