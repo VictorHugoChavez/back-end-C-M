@@ -15,6 +15,9 @@ public class ProductosModel {
 	@Column(unique = true, nullable = false)
 	private Integer id;
 	
+	@Column(unique = true, nullable = false)
+	private String valor;
+	
 	@Column(name = "Nombre_producto", nullable = false, length = 255)
 	private String nombre_producto;
 	
