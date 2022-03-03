@@ -26,7 +26,7 @@ public class UsuariosModel {
 	@Column(name = "Usuario", nullable = false, length = 12, unique=true)
 	private String usuario;
 	
-	@Column(name = "Password", nullable = false, length = 16)
+	@Column(name = "Password", nullable = false, length = 255)
 	private String contrasenia;
 	
 	@Column(name = "Telefono", nullable = false, length = 15)

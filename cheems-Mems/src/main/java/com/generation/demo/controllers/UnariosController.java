@@ -3,6 +3,7 @@ package com.generation.demo.controllers;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +17,11 @@ import com.generation.demo.services.UsuariosService;
 @RestController
 public class UnariosController {
 	private final UsuariosService usuariosService;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public UnariosController(@Autowired UsuariosService usuariosService) {
+	public UnariosController(@Autowired UsuariosService usuariosService, @Autowired BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.usuariosService = usuariosService;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 	
 	@GetMapping("/usuarios")
@@ -29,6 +32,7 @@ public class UnariosController {
 	//Guardar & editar datos en la tabla usuarios
 	@PostMapping("/usuarios")
 	public UsuariosModel guardarDatos(@RequestBody UsuariosModel usuariosModel) {
+		usuariosModel.setContrasenia(bCryptPasswordEncoder.encode(usuariosModel.getContrasenia()));
 		return usuariosService.guardarDatos(usuariosModel);
 	}
 	
@@ -37,4 +41,6 @@ public class UnariosController {
 	public boolean eliminarDato(@PathVariable("id") Integer id) {
 		return usuariosService.eliminarDato(id);
 	}
+	
+	
 }
